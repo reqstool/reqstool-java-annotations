@@ -1,9 +1,9 @@
 = Reqstool Java Annotations
 
-include::description.adoc[]
+This provides Java annotations and processing of annotated code.
 
-include::installation.adoc[]
+Enables the usage of `@Requirements` and `@SVCs` annotations and processors to collect, format and write annotations data to yaml files.
 
-include::usage.adoc[]
+== License
 
-include::debugging.adoc[]
+MIT License.

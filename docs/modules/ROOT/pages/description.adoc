@@ -1,6 +1,0 @@
-== Description
-
-This provides Java annotations and processing of annotated code.
-
-Enables the usage of `@Requirements` and `@SVCs` annotations and processors to collect, format and write annotations data to yaml files.
-
