@@ -4,6 +4,11 @@ This provides Java annotations and processing of annotated code.
 
 Enables the usage of `@Requirements` and `@SVCs` annotations and processors to collect, format and write annotations data to yaml files.
 
+== Related components
+
+* xref:reqstool-java-maven-plugin::index.adoc[Maven Plugin] -- packages annotations into a reqstool artifact during Maven builds
+* xref:reqstool-java-gradle-plugin::index.adoc[Gradle Plugin] -- packages annotations into a reqstool artifact during Gradle builds
+
 == License
 
 MIT License.
