@@ -1,4 +1,4 @@
-= Reqstool Java Annotations
+= reqstool Java Annotations
 
 This provides Java annotations and processing of annotated code.
 
