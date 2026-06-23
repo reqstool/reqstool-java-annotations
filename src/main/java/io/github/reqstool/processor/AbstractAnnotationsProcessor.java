@@ -1,6 +1,7 @@
 // Copyright © LFV
 package io.github.reqstool.processor;
 
+import io.github.reqstool.annotations.Requirements;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -68,6 +69,7 @@ public abstract class AbstractAnnotationsProcessor extends AbstractProcessor {
 	}
 
 	@Override
+	@Requirements({ "ANNOTATIONS_002" })
 	public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
 		if (roundEnv.processingOver()) {
 			return exportToYAML();
@@ -106,6 +108,7 @@ public abstract class AbstractAnnotationsProcessor extends AbstractProcessor {
 
 	abstract List<String> getAnnotationStrings(Element element);
 
+	@Requirements({ "ANNOTATIONS_003" })
 	private boolean exportToYAML() {
 
 		Map<String, Object> result = new LinkedHashMap<>();

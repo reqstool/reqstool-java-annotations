@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 class RequirementsTests {
 
 	@Test
+	@SVCs({ "SVC_ANNOTATIONS_001" })
 	void testOneRequirement() {
 
 		Requirements requirements = new Requirements() {
@@ -28,6 +29,7 @@ class RequirementsTests {
 	}
 
 	@Test
+	@SVCs({ "SVC_ANNOTATIONS_001" })
 	void testMultipleRequirements() {
 
 		Requirements requirements = new Requirements() {

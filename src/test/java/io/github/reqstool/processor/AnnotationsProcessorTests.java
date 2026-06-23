@@ -3,6 +3,7 @@ package io.github.reqstool.processor;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import io.github.reqstool.annotations.SVCs;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,6 +32,7 @@ class AnnotationsProcessorTests {
 	Path tempDir;
 
 	@Test
+	@SVCs({ "SVC_ANNOTATIONS_002", "SVC_ANNOTATIONS_003" })
 	void testRequirementsAnnotations() throws IOException {
 
 		String javaFileResourceName = "java/RequirementsExample.java";
@@ -42,6 +44,7 @@ class AnnotationsProcessorTests {
 	}
 
 	@Test
+	@SVCs({ "SVC_ANNOTATIONS_002", "SVC_ANNOTATIONS_003" })
 	void testSVCsAnnotations() throws IOException {
 
 		String javaFileResourceName = "java/SVCsExample.java";

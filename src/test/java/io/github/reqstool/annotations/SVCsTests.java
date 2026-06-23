@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 class SVCsTests {
 
 	@Test
+	@SVCs({ "SVC_ANNOTATIONS_001" })
 	void testOneSVC() {
 
 		SVCs svcs = new SVCs() {
@@ -28,9 +29,10 @@ class SVCsTests {
 	}
 
 	@Test
+	@SVCs({ "SVC_ANNOTATIONS_001" })
 	void testMultipleSVCs() {
 
-		Requirements svcs = new Requirements() {
+		SVCs svcs = new SVCs() {
 
 			@Override
 			public String[] value() {
@@ -39,7 +41,7 @@ class SVCsTests {
 
 			@Override
 			public Class<? extends Annotation> annotationType() {
-				return Requirements.class;
+				return SVCs.class;
 			}
 		};
 
