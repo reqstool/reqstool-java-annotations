@@ -10,17 +10,57 @@ on:
       - reopened
       - synchronize
 
+permissions:
+  contents: read
+
 jobs:
   linting:
     name: Check linting
     uses: ./.github/workflows/lint.yml
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        reqstool-source: [pypi, main]
     steps:
       - uses: actions/checkout@v7
-      - name: Build and run tests
+      - name: Set up JDK
         uses: actions/setup-java@v5
         with:
           java-version: "21"
           distribution: "temurin"
-      - run: mvn clean verify
+      - name: Build and run tests
+        run: mvn clean verify
+      - name: Install into local repository
+        run: mvn -DskipTests install
+      - name: Self-apply own annotation processor to own sources
+        run: mvn compiler:compile compiler:testCompile -Pself-apply
+      - name: Combine main/test annotation processor output
+        # The processor's main/test annotation outputs land in separate
+        # generated-sources directories (no shared mojo to combine them, unlike
+        # the Maven/Gradle plugins) -- merge them the same way those plugins'
+        # combineOutput() would, so reqstool status has real, non-fabricated data.
+        run: |
+          mkdir -p target/reqstool
+          {
+            echo "# yaml-language-server: \$schema=https://raw.githubusercontent.com/reqstool/reqstool-client/main/src/reqstool/resources/schemas/v1/annotations.schema.json"
+            yq eval-all '. as $item ireduce ({}; . * $item )' \
+              target/generated-sources/annotations/resources/annotations.yml \
+              target/generated-test-sources/test-annotations/resources/annotations.yml | grep -v "^#"
+          } > target/reqstool/annotations.yml
+      - name: Install reqstool
+        uses: reqstool/.github/.github/actions/install-reqstool@9c6feaab046f4782f430dd2527fdb82c2a5cd926 # main 2026-06-22
+        with:
+          reqstool-source: ${{ matrix.reqstool-source }}
+      - name: Validate reqstool spec completeness
+        # not yet available in the latest PyPI release
+        if: matrix.reqstool-source == 'main'
+        uses: reqstool/.github/.github/actions/validate-reqstool@9c6feaab046f4782f430dd2527fdb82c2a5cd926 # main 2026-06-22
+      - name: Run reqstool status
+        uses: reqstool/.github/.github/actions/reqstool-status@9c6feaab046f4782f430dd2527fdb82c2a5cd926 # main 2026-06-22
+        with:
+          fail-if-incomplete: "true"
+
+  validate-openspec:
+    uses: reqstool/.github/.github/workflows/common-validate-openspec.yml@9c6feaab046f4782f430dd2527fdb82c2a5cd926 # main 2026-06-22

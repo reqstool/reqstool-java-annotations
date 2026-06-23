@@ -16,6 +16,7 @@ import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import io.github.reqstool.annotations.SVCs;
 
 /**
  * Test custom AnnotationsProcessorTests
@@ -31,6 +32,7 @@ class AnnotationsProcessorTests {
 	Path tempDir;
 
 	@Test
+	@SVCs({ "SVC_ANNOTATIONS_002", "SVC_ANNOTATIONS_003" })
 	void testRequirementsAnnotations() throws IOException {
 
 		String javaFileResourceName = "java/RequirementsExample.java";
@@ -42,6 +44,7 @@ class AnnotationsProcessorTests {
 	}
 
 	@Test
+	@SVCs({ "SVC_ANNOTATIONS_002", "SVC_ANNOTATIONS_003" })
 	void testSVCsAnnotations() throws IOException {
 
 		String javaFileResourceName = "java/SVCsExample.java";

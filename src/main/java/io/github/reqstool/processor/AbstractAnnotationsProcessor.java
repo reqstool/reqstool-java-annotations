@@ -26,6 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
+import io.github.reqstool.annotations.Requirements;
 
 public abstract class AbstractAnnotationsProcessor extends AbstractProcessor {
 
@@ -68,6 +69,7 @@ public abstract class AbstractAnnotationsProcessor extends AbstractProcessor {
 	}
 
 	@Override
+	@Requirements({ "ANNOTATIONS_002" })
 	public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
 		if (roundEnv.processingOver()) {
 			return exportToYAML();
@@ -106,6 +108,7 @@ public abstract class AbstractAnnotationsProcessor extends AbstractProcessor {
 
 	abstract List<String> getAnnotationStrings(Element element);
 
+	@Requirements({ "ANNOTATIONS_003" })
 	private boolean exportToYAML() {
 
 		Map<String, Object> result = new LinkedHashMap<>();

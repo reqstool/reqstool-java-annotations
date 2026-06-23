@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/reqstool/reqstool-client/main/src/reqstool/resources/schemas/v1/requirements.schema.json
+---
+metadata:
+  urn: reqstool-java-annotations
+  variant: microservice
+  title: Reqstool Java Annotations
+  url: https://github.com/reqstool/reqstool-java-annotations
+
+requirements:
+  - id: ANNOTATIONS_001
+    title: Annotation definitions
+    significance: shall
+    description: >-
+      The library shall define @Requirements (targeting types, methods, and fields) and
+      @SVCs (targeting types and methods) annotations, each retaining a string array of
+      IDs at source level only.
+    categories:
+      - functional-suitability
+    revision: "0.1.0"
+
+  - id: ANNOTATIONS_002
+    title: Annotation element collection
+    significance: shall
+    description: >-
+      The annotation processor shall collect every element annotated with a supported
+      annotation across all compilation rounds, accumulating multiple element locations
+      against the same requirement or SVC ID.
+    categories:
+      - functional-suitability
+    revision: "0.1.0"
+
+  - id: ANNOTATIONS_003
+    title: YAML export
+    significance: shall
+    description: >-
+      The annotation processor shall serialize collected annotation locations to an
+      annotations.yml resource at the standard SOURCE_OUTPUT location, with a JSON
+      schema header comment and the appropriate implementations/tests element key for
+      @Requirements and @SVCs respectively.
+    categories:
+      - functional-suitability
+    revision: "0.1.0"

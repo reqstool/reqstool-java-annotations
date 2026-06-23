@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/reqstool/reqstool-client/main/src/reqstool/resources/schemas/v1/software_verification_cases.schema.json
+
+cases:
+  - id: SVC_ANNOTATIONS_001
+    requirement_ids: ["ANNOTATIONS_001"]
+    title: "Verify @Requirements and @SVCs retain single and multiple string values"
+    verification: automated-test
+    revision: "0.1.0"
+
+  - id: SVC_ANNOTATIONS_002
+    requirement_ids: ["ANNOTATIONS_002"]
+    title: "Verify the processor collects multiple element locations for the same ID, end to end"
+    verification: automated-test
+    revision: "0.1.0"
+
+  - id: SVC_ANNOTATIONS_003
+    requirement_ids: ["ANNOTATIONS_003"]
+    title: "Verify the exported YAML matches the expected schema-tagged implementations/tests structure"
+    verification: automated-test
+    revision: "0.1.0"

@@ -13,6 +13,7 @@ import java.lang.annotation.Target;
 @Documented
 @Target({ ElementType.TYPE, ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.SOURCE)
+@Requirements({ "ANNOTATIONS_001" })
 public @interface Requirements {
 
 	String[] value() default {

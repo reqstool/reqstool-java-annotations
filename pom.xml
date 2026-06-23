@@ -391,5 +391,37 @@
                 </plugins>
             </build>
         </profile>
+
+        <!--
+            Self-application: re-runs annotation processing against this module's own
+            already-built-and-installed artifact, so this library dogfoods its own
+            @Requirements/@SVCs annotations. Requires `mvn -DskipTests install` first
+            (chicken-and-egg: the processor must exist as a built jar before it can be
+            put on its own annotationProcessorPath).
+        -->
+        <profile>
+            <id>self-apply</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <annotationProcessorPaths>
+                                <path>
+                                    <groupId>com.google.auto.service</groupId>
+                                    <artifactId>auto-service</artifactId>
+                                    <version>1.1.1</version>
+                                </path>
+                                <path>
+                                    <groupId>io.github.reqstool</groupId>
+                                    <artifactId>reqstool-java-annotations</artifactId>
+                                    <version>${project.version}</version>
+                                </path>
+                            </annotationProcessorPaths>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 </project>
