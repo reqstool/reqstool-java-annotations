@@ -1,6 +1,7 @@
 // Copyright © LFV
 package io.github.reqstool.processor;
 
+import io.github.reqstool.annotations.Requirements;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -26,7 +27,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
-import io.github.reqstool.annotations.Requirements;
 
 public abstract class AbstractAnnotationsProcessor extends AbstractProcessor {
 

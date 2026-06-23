@@ -3,6 +3,7 @@ package io.github.reqstool.processor;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import io.github.reqstool.annotations.SVCs;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,7 +17,6 @@ import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import io.github.reqstool.annotations.SVCs;
 
 /**
  * Test custom AnnotationsProcessorTests
