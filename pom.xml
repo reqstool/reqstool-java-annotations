@@ -6,7 +6,8 @@
 
     <groupId>io.github.reqstool</groupId>
     <artifactId>reqstool-java-annotations</artifactId>
-    <version>1.0.0</version>
+    <!-- Derived from git state by the Nisse core extension (.mvn/extensions.xml). -->
+    <version>${nisse.jgit.dynamicVersion}</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
