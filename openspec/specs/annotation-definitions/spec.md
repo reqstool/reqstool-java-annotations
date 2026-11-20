@@ -12,4 +12,5 @@ reqstool requirement and SVC IDs only; titles and descriptions are injected at r
 The system SHALL implement ANNOTATIONS_001.
 
 #### Scenario: SVC_ANNOTATIONS_001
-The system SHALL pass SVC_ANNOTATIONS_001.
+- **WHEN** SVC_ANNOTATIONS_001 is run
+- **THEN** it passes
