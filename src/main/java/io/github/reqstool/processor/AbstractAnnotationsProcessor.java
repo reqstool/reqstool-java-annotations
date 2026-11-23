@@ -132,7 +132,6 @@ public abstract class AbstractAnnotationsProcessor extends AbstractProcessor {
 				processingEnv.getMessager()
 					.printMessage(Diagnostic.Kind.NOTE, "Writing Requirements Annotations data to: " + file.getName());
 
-				// write JSON schema (LF, like the YAML body Jackson writes, on every platform)
 				writer.write(YAML_LANG_SERVER_SCHEMA_INFO + "\n");
 
 				// write serialized result

@@ -40,8 +40,6 @@ jobs:
       post-test-command: |
         mvn --batch-mode -DskipTests install
         mvn --batch-mode compiler:compile compiler:testCompile -Pself-apply
-        # main/test annotation processor outputs land in separate generated-sources
-        # directories (no shared mojo to combine them, unlike the Maven/Gradle plugins).
         scripts/combine-annotations.sh \
           target/generated-sources/annotations/resources/annotations.yml \
           target/generated-test-sources/test-annotations/resources/annotations.yml \
@@ -63,7 +61,6 @@ jobs:
   validate-openspec:
     uses: reqstool/.github/.github/workflows/common-validate-openspec.yml@6fc8d3e3d4c3fdf7a83cb7b7a274e4761486ca71 # 1.2.1
 
-  # Single stable required check: survives job renames and matrix changes.
   ci:
     if: ${{ always() }}
     needs: [lint, build, reqstool, smoke, validate-openspec]
