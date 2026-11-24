@@ -49,9 +49,9 @@
         <!-- for info on setting java versions see: https://www.baeldung.com/maven-java-version -->
         <java.vendor>Eclipse Adoptium</java.vendor> <!-- for Spring Boot -->
 
-        <maven.compiler.source>21</maven.compiler.source> <!-- for Maven Compiler -->
-        <maven.compiler.target>21</maven.compiler.target>
-        <maven.compiler.release>21</maven.compiler.release>
+        <maven.compiler.source>25</maven.compiler.source> <!-- for Maven Compiler -->
+        <maven.compiler.target>25</maven.compiler.target>
+        <maven.compiler.release>25</maven.compiler.release>
 
     </properties>
 
